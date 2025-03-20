@@ -42,6 +42,7 @@ def create_cache():
         "cache_type": "lru",
         "capacity": 1000 
     }
+
     status, body = do_request("POST", f"{BASE_URL}/cache/create", json_data=payload)
     print("Create Cache:", status, body)
 
@@ -88,7 +89,7 @@ def main():
     prepopulate_keys(key_pool)
     
     num_operations = 20000  # Increase if you need more stress
-    max_workers = 200
+    max_workers = 64
 
     print("Starting stress workload simulation with pycurl...")
     start_time = time.perf_counter()
